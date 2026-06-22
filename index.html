@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiYES — Milan Youth of El Shaddai</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; background: #fff; color: #1a1a2e; }
+
+    /* NAV */
+    .nav-bar { display: flex; justify-content: space-between; align-items: center; padding: 16px 48px; border-bottom: 0.5px solid #e0eaf5; background: #fff; position: sticky; top: 0; z-index: 100; }
+    .nav-logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .nav-logo-img { height: 36px; object-fit: contain; }
+    .nav-logo { font-size: 22px; font-weight: 700; color: #1565C0; letter-spacing: 0.04em; font-family: 'Georgia', serif; }
+    .nav-logo span { color: #1a1a2e; }
+    .nav-sub { font-size: 10px; color: #888; font-family: Arial, sans-serif; letter-spacing: 0.05em; margin-top: 1px; }
+    .nav-links { display: flex; gap: 28px; font-size: 13px; font-family: Arial, sans-serif; }
+    .nav-links a { color: #555; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #1565C0; }
+
+    /* HERO */
+    .hero { background: #0D47A1; padding: 80px 48px 60px; text-align: center; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 0.18em; color: #90CAF9; text-transform: uppercase; font-family: Arial, sans-serif; margin-bottom: 16px; }
+    .hero-title { font-size: 52px; font-weight: 700; color: #fff; line-height: 1.12; margin-bottom: 16px; font-family: 'Georgia', serif; }
+    .hero-title span { color: #90CAF9; }
+    .hero-sub { font-size: 16px; color: #BBDEFB; line-height: 1.7; max-width: 520px; margin: 0 auto 12px; font-family: Arial, sans-serif; }
+    .hero-address { font-size: 13px; color: #7aabda; font-family: Arial, sans-serif; margin-bottom: 28px; }
+    .hero-pills { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero-pill { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 6px 16px; font-size: 12px; color: #E3F2FD; font-family: Arial, sans-serif; letter-spacing: 0.04em; }
+    .cta-btn { background: #fff; color: #0D47A1; border: none; border-radius: 6px; padding: 12px 28px; font-size: 14px; font-weight: 700; font-family: Arial, sans-serif; cursor: pointer; transition: opacity 0.2s; }
+    .cta-btn:hover { opacity: 0.9; }
+
+    /* PHOTO STRIP */
+    .photo-strip { display: grid; grid-template-columns: repeat(6, 1fr); height: 240px; gap: 3px; }
+    .photo-slot { overflow: hidden; position: relative; background: #1a3a6b; }
+    .photo-slot img { width: 100%; height: 100%; object-fit: cover; opacity: 0.82; transition: opacity 0.3s; }
+    .photo-slot:hover img { opacity: 1; }
+    .photo-year { position: absolute; bottom: 8px; left: 10px; font-size: 11px; color: rgba(255,255,255,0.9); font-family: Arial, sans-serif; background: rgba(0,0,0,0.4); padding: 2px 7px; border-radius: 3px; }
+
+    /* ROOTS */
+    .roots-section { padding: 64px 48px; background: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .roots-eyebrow { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #1565C0; font-family: Arial, sans-serif; margin-bottom: 12px; }
+    .roots-title { font-size: 28px; font-weight: 700; color: #0D47A1; font-family: 'Georgia', serif; margin-bottom: 18px; line-height: 1.3; }
+    .roots-body { font-size: 14px; color: #444; line-height: 1.85; font-family: Arial, sans-serif; }
+    .roots-body p { margin-bottom: 14px; }
+    .roots-right { background: #F0F6FF; border-radius: 12px; padding: 24px; border: 0.5px solid #BBDEFB; }
+    .es-logo-wrap { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 0.5px solid #BBDEFB; }
+    .es-logo { height: 48px; object-fit: contain; }
+    .es-label { font-size: 13px; font-weight: 700; color: #0D47A1; font-family: Arial, sans-serif; line-height: 1.4; }
+    .es-label span { display: block; font-size: 11px; font-weight: 400; color: #666; margin-top: 2px; }
+    .es-fact { display: flex; gap: 12px; margin-bottom: 14px; font-size: 13px; font-family: Arial, sans-serif; color: #444; line-height: 1.65; }
+    .es-fact i { color: #1565C0; font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+    .es-quote { border-left: 3px solid #1565C0; padding-left: 14px; font-size: 13px; font-style: italic; color: #0D47A1; font-family: 'Georgia', serif; line-height: 1.7; margin-top: 16px; }
+
+    /* GENERATION */
+    .gen-section { padding: 64px 48px; background: #F8FBFF; border-top: 3px solid #1565C0; }
+    .gen-eyebrow { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #1565C0; font-family: Arial, sans-serif; margin-bottom: 12px; }
+    .gen-title { font-size: 28px; font-weight: 700; color: #0D47A1; font-family: 'Georgia', serif; margin-bottom: 22px; line-height: 1.3; }
+    .gen-body { font-size: 14px; color: #444; line-height: 1.85; font-family: Arial, sans-serif; max-width: 720px; }
+    .gen-body p { margin-bottom: 16px; }
+    .verse-block { background: #fff; border-left: 4px solid #1565C0; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 22px 0; }
+    .verse-text { font-size: 16px; font-style: italic; color: #0D47A1; font-family: 'Georgia', serif; line-height: 1.7; margin-bottom: 8px; }
+    .verse-ref { font-size: 11px; color: #1565C0; font-family: Arial, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
+    .verse-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+
+    /* ACTIVITIES */
+    .activities-section { padding: 64px 48px; background: #fff; }
+    .act-eyebrow { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #1565C0; font-family: Arial, sans-serif; margin-bottom: 12px; }
+    .act-title { font-size: 26px; font-weight: 700; color: #0D47A1; font-family: 'Georgia', serif; margin-bottom: 28px; }
+    .act-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .act-card { border: 0.5px solid #BBDEFB; border-radius: 12px; padding: 24px 20px; background: #F8FBFF; }
+    .act-icon { font-size: 26px; color: #1565C0; margin-bottom: 12px; }
+    .act-card-title { font-size: 13px; font-weight: 700; color: #0D47A1; font-family: Arial, sans-serif; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .act-card-text { font-size: 13px; color: #555; font-family: Arial, sans-serif; line-height: 1.75; }
+
+    /* MISSION */
+    .mission-bar { background: #0D47A1; padding: 48px; text-align: center; }
+    .mission-label { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #90CAF9; font-family: Arial, sans-serif; margin-bottom: 12px; }
+    .mission-text { font-size: 24px; color: #fff; font-family: 'Georgia', serif; font-style: italic; line-height: 1.6; }
+    .mission-text span { color: #90CAF9; }
+
+    /* FOOTER */
+    .footer-bar { background: #0A2D6B; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-logo { font-size: 15px; font-weight: 700; color: #90CAF9; font-family: 'Georgia', serif; }
+    .footer-text { font-size: 11px; color: #5a7eaa; font-family: Arial, sans-serif; text-align: right; line-height: 1.7; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-bar { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 48px 20px 36px; }
+      .hero-title { font-size: 32px; }
+      .photo-strip { grid-template-columns: repeat(3, 1fr); height: 180px; }
+      .roots-section { grid-template-columns: 1fr; padding: 36px 20px; gap: 28px; }
+      .gen-section { padding: 36px 20px; }
+      .verse-grid { grid-template-columns: 1fr; }
+      .activities-section { padding: 36px 20px; }
+      .act-grid { grid-template-columns: 1fr; }
+      .mission-bar { padding: 32px 20px; }
+      .mission-text { font-size: 18px; }
+      .footer-bar { padding: 20px; flex-direction: column; text-align: center; }
+      .footer-text { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav-bar">
+    <div class="nav-logo-wrap">
+      <img class="nav-logo-img" src="images/logo-elshaddai.png" alt="El Shaddai logo" onerror="this.style.display='none'">
+      <div>
+        <div class="nav-logo">Mi<span>YES</span></div>
+        <div class="nav-sub">Milan Youth of El Shaddai · Est. 2010</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Who we are</a>
+      <a href="#">Members</a>
+      <a href="#">Activities</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-eyebrow">Milan Youth of El Shaddai · Est. 2010</div>
+    <h1 class="hero-title">Young people,<br><span>rooted in faith.</span></h1>
+    <p class="hero-sub">Young Filipinos in Milan, serving God, growing together, and staying connected to a global family of faith.</p>
+    <p class="hero-address"><i class="ti ti-map-pin"></i> Piazza Santa Maria del Carmine 3, Milano (Brera)</p>
+    <div class="hero-pills">
+      <span class="hero-pill">Catholic · Charismatic</span>
+      <span class="hero-pill">Filipino Community</span>
+      <span class="hero-pill">El Shaddai Global Network</span>
+    </div>
+    <button class="cta-btn">Join our community</button>
+  </section>
+
+  <div class="photo-strip">
+    <div class="photo-slot">
+      <img src="images/photo1.jpg" alt="MiYES early years">
+      <div class="photo-year">~2000</div>
+    </div>
+    <div class="photo-slot">
+      <img src="images/photo2.jpg" alt="Friendship Games 2015">
+      <div class="photo-year">2015</div>
+    </div>
+    <div class="photo-slot">
+      <img src="images/photo3.jpg" alt="EYP 2019">
+      <div class="photo-year">2019</div>
+    </div>
+    <div class="photo-slot">
+      <img src="images/photo4.jpg" alt="In church 2021">
+      <div class="photo-year">2021</div>
+    </div>
+    <div class="photo-slot">
+      <img src="images/photo5.jpg" alt="Christmas 2023">
+      <div class="photo-year">2023</div>
+    </div>
+    <div class="photo-slot">
+      <img src="images/photo6.jpg" alt="MiYES on stage 2025">
+      <div class="photo-year">2025</div>
+    </div>
+  </div>
+
+  <section class="roots-section">
+    <div class="roots-left">
+      <div class="roots-eyebrow">Our roots</div>
+      <h2 class="roots-title">Part of something<br>much bigger than Milan.</h2>
+      <div class="roots-body">
+        <p>MiYES was founded in 2010 as the youth of the El Shaddai Charismatic Community in Milan. We are part of one of the largest Catholic lay movements in the world, born in the Philippines and now present across the globe.</p>
+        <p>We are young Filipinos living in Milan, bringing our faith, our culture, and our community with us — and sharing it with whoever wants to be part of it.</p>
+        <p>Our home is Piazza Santa Maria del Carmine 3, in the heart of Brera, where we gather, pray, and serve together.</p>
+      </div>
+    </div>
+    <div class="roots-right">
+      <div class="es-logo-wrap">
+        <img class="es-logo" src="images/logo-elshaddai.png" alt="El Shaddai" onerror="this.style.display='none'">
+        <div class="es-label">El Shaddai DWXI PPFI
+          <span>The movement we belong to</span>
+        </div>
+      </div>
+      <div class="es-fact"><i class="ti ti-world"></i>Founded in Manila in 1981 by Bro. Mike Velarde. Now a global Catholic movement present in over 30 countries.</div>
+      <div class="es-fact"><i class="ti ti-users"></i>Over 9 million members worldwide. The largest lay Catholic organisation in the world.</div>
+      <div class="es-fact"><i class="ti ti-check"></i>Fully approved by and linked to the Catholic Church, with charismatic worship, Scripture, and Eucharist at its heart.</div>
+      <div class="es-fact"><i class="ti ti-flame"></i>El Shaddai means "a God who is more than enough" — a God present and generous in our everyday lives.</div>
+      <div class="es-quote">"The movement allows people to really connect to the Word of God."</div>
+    </div>
+  </section>
+
+  <section class="gen-section">
+    <div class="gen-eyebrow">Our calling</div>
+    <h2 class="gen-title">Passing the torch —<br>one generation at a time.</h2>
+    <div class="gen-body">
+      <p>At the heart of MiYES is a conviction: faith is not something you keep to yourself. It is something you hand on. Every generation that has been part of this community has carried the same responsibility — to seek God sincerely, and to inspire those who come after to do the same.</p>
+
+      <div class="verse-block">
+        <div class="verse-text">"Don't let anyone look down on you because you are young, but set an example for the believers in speech, in conduct, in love, in faith and in purity."</div>
+        <div class="verse-ref">1 Timothy 4:12</div>
+      </div>
+
+      <p>We believe that young people are not the future of the Church. They are the Church, here and now. MiYES exists to be a place where the youngest among us encounter a living God — and where that encounter becomes a mission they carry forward.</p>
+
+      <div class="verse-grid">
+        <div class="verse-block">
+          <div class="verse-text">"Even youths grow tired and weary, but those who hope in the Lord will renew their strength."</div>
+          <div class="verse-ref">Isaiah 40:30–31</div>
+        </div>
+        <div class="verse-block">
+          <div class="verse-text">"Remember your Creator in the days of your youth, before the evil days come."</div>
+          <div class="verse-ref">Ecclesiastes 12:1</div>
+        </div>
+        <div class="verse-block">
+          <div class="verse-text">"How can a young person stay on the path of purity? By living according to your word."</div>
+          <div class="verse-ref">Psalm 119:9</div>
+        </div>
+        <div class="verse-block">
+          <div class="verse-text">"Let the little children come to me, and do not hinder them, for the kingdom of God belongs to such as these."</div>
+          <div class="verse-ref">Luke 18:16</div>
+        </div>
+      </div>
+
+      <p style="margin-top:20px;">The faces in our community change with every year. But the mission does not. Each generation of MiYES is called to be a living witness — to the generation before, and to those still to come.</p>
+    </div>
+  </section>
+
+  <section class="activities-section">
+    <div class="act-eyebrow">What we do</div>
+    <h2 class="act-title">Life in the community</h2>
+    <div class="act-grid">
+      <div class="act-card">
+        <div class="act-icon"><i class="ti ti-hand-stop"></i></div>
+        <div class="act-card-title">Monthly service</div>
+        <p class="act-card-text">Once a month we come together to serve through prayer, practical help, and presence within our community in Milan. Service is not what we do. It is who we are.</p>
+      </div>
+      <div class="act-card">
+        <div class="act-icon"><i class="ti ti-world"></i></div>
+        <div class="act-card-title">El Shaddai Youth Global Network</div>
+        <p class="act-card-text">We actively participate in events and activities organised by the El Shaddai Youth Global Network, connecting with young Catholics from the Philippines and across the world.</p>
+      </div>
+      <div class="act-card">
+        <div class="act-icon"><i class="ti ti-heart"></i></div>
+        <div class="act-card-title">Prayer and fellowship</div>
+        <p class="act-card-text">Regular gatherings for worship, Scripture, and fellowship at our home in Piazza Santa Maria del Carmine — the heart of MiYES life in Milan.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="mission-bar">
+    <div class="mission-label">Our mission</div>
+    <p class="mission-text">"To raise up <span>young hearts</span> for God —<br>in service, in prayer, in love."</p>
+  </div>
+
+  <footer class="footer-bar">
+    <div class="footer-logo">MiYES · Milan Youth of El Shaddai · Est. 2010</div>
+    <div class="footer-text">Piazza Santa Maria del Carmine 3, Milano · Catholic Charismatic Community<br>Part of El Shaddai DWXI PPFI International</div>
+  </footer>
+
+</body>
+</html>
